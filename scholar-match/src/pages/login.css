@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+  }
+  
+
+  .image1{
+  /* padding: 5px; */
+  max-width:80vw;
+  max-height:90vh;
+  width:auto;
+  height:auto;
+  float: left;
+  }
+  .signinarea{
+    float: right;
+    width:70vw;
+    height:90vh;
+  }
+  .area{
+    overflow: hidden;
+    background-color: #FFDEE9;
+background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+
+  }
+
+  .usersigninformarea{
+    /* background-color: rgb(255, 34, 0); */
+    display: flexbox;
+    position: relative;
+    margin-top: 5vh;
+    margin-left: 500px;
+    max-width: 30%;
+    height: 40%;
+  
+  }
+
+  .continueGuest{
+    background-color: bisque;
+    max-width: 10%;
+    float: right;
+    margin-right: 20px;
+    margin-top: 19vw;
+  }
+
+  .makeAccount{
+    background-color: bisque;
+    max-width: 10%;
+    float: left;
+    margin-right: 20px;
+    margin-top: 19vw;
+  }
+
+  .contGoogle{
+    margin-top: 40%;
+    margin-left: 16%;
+    /* background-color: blueviolet; */
+  }
+  .google{
+    height:40px;
+    margin-left: 15%;
+  }
+  input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+  button{
+    padding: 12px 20px;
+    border-radius:10px;
+    background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white; 
+  }
+
+  Button{
+    padding: 12px 20px;
+    border-radius:10px;
+  }
+  .guestButton{
+    padding: 12px 20px;
+    border-radius:10px;
+  }
+
+  .makeAccountButton{
+    padding: 20px 20px;
+    border-radius:10px;
+  }
+
+  .signInAuth{
+    /* background-color: azure; */
+    border-radius:100px;
+    margin-top: 40px;
+    margin-left: 140px;
+  }
+  .logoimg{
+    /* background-color: black; */
+    height: 100px;
+    margin-left: 8vw;
+    /* max-height: 200px; */
+    /* margin-left: 33vw; */
+    /* margin-top: 10vh; */
+  }
+  h2.tellSignIn{
+    color: rgb(239, 83, 228);
+    /* text-shadow: #000000  1px 0 10px; */
+    font-weight: bold;
+  }
+  button.loginclick{
+    background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 2s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    margin-right: 200px;
+   
+  }
+/* 
+  
+  button.loginclick {
+    background-position: right center; /* change the direction of the change here */
+    /* color: rgb(255, 9, 9);
+    text-decoration: none;
+  } */
+  

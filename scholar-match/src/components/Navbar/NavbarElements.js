@@ -2,9 +2,6 @@ import { FaBars } from "react-icons/fa";
 import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
 
-// SKELETON CODE FROM https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/#
-// WILL EDIT ONCE WE START DEVELOPING
-
 export const Nav = styled.nav`
 background: #ADD8E6;
 height: 85px;

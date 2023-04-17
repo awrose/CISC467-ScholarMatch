@@ -7,8 +7,8 @@ const Navbar = () => {
     <>
       <Nav>
         <NavMenu>
-          <NavLink to="/main" activeStyle>
-            Home
+          <NavLink to="/" activeStyle>
+            Login
           </NavLink>
           <NavLink to="/login" activeStyle>
             Log in/Sign up
