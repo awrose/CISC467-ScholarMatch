@@ -12,9 +12,9 @@ const SavedScholarships = () => {
         <GridCard/>
         <GridCard/>
         <GridCard/>
-      </Row>
+      </Row> 
     </div>
   );
 };
-  
+   
 export default SavedScholarships;
