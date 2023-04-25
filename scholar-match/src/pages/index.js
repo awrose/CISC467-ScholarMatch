@@ -29,7 +29,11 @@ const Home = () => {
   return (
     <div>
       <Row gutter = {[20, 20]}>
-        <ScholarshipCard/>
+        {
+          scholarships.map((scholarship) => (
+            <ScholarshipCard scholarshipName={scholarship.Name} scholarshipDescription={"Short Description"} scholarshipAmount={scholarship.Amount} scholarshipDeadline={"deadline"}/>
+          ))
+        }
       </Row>
     </div>
   );
