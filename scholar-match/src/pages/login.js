@@ -4,9 +4,28 @@ import student from "../images/loginStudent.jpg";
 import googleSignIn from "../images/google.png";
 import logo from "../images/logo.png"
 import "../styling_sheets/loginPage.css"
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/messaging";
+import "firebase/compat/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 
-  
 const Login = () => {
+  firebase.initializeApp({
+    apiKey: "AIzaSyD8c7x-yqw10THw01ilxLwhvQLFyacGOtg",
+    authDomain: "scholarmatch-e5043.firebaseapp.com",
+    projectId: "scholarmatch-e5043",
+    storageBucket: "scholarmatch-e5043.appspot.com",
+    messagingSenderId: "785111082002",
+    appId: "1:785111082002:web:ee9263f0e14b3c2399a4cb",
+    measurementId: "G-WVFDR8SMFT"
+});
+const authenticate = firebase.auth();
+const authenticationService = new firebase.auth.GoogleAuthProvider();
+
+const signInBox = () => {
+    authenticate.signInWithPopup(authenticationService);
+};
   return (
     <div className='x'>
       <div className='area'>
@@ -27,7 +46,7 @@ const Login = () => {
         </div>
 
         <div className='signInAuth'>
-        <button type="submit" class="loginclick">Submit</button>
+        <button type="submit" class="loginclick" onClick={signInBox}>Sign in with google</button>
         </div>
 
         <div className='forgotPassword'>
