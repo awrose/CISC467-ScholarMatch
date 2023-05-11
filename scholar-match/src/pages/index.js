@@ -9,12 +9,18 @@ import Button from 'react-bootstrap/Button'
 import '../styling_sheets/homePage.css';
 import {Row } from "antd";
 import ScholarshipCard from "../components/HomePage/Card"
+import loadedScholarships from "../scholarships.json"
 
   
 const Home = () => {
-  const [scholarships, setScholsarships] = useState([]);
+  const SCHOLARSHIPS = loadedScholarships.map((scholarship) => ({
+    ...scholarship
+  }));
 
-  useEffect(() => {
+  const [scholarships, setScholsarships] = useState(SCHOLARSHIPS);
+  //const [dbscholarships, setdbscholarships] = useState([]);
+
+  /*useEffect(() => {
     Fetchdata();
   }, [])
  
@@ -22,16 +28,16 @@ const Home = () => {
     db.collection("Scholarships").get().then((querySnapshot) => {
       querySnapshot.forEach(element => {
         var data = element.data();
-        setScholsarships(arr => [...arr, data])
+        setdbscholarships(arr => [...arr, data])
       })
     })
-  }
+  }*/
   return (
     <div>
       <Row gutter = {[20, 20]}>
         {
           scholarships.map((scholarship) => (
-            <ScholarshipCard scholarshipName={scholarship.Name} scholarshipDescription={scholarship.Description} scholarshipAmount={scholarship.Amount} scholarshipDeadline={scholarship.Deadline.toDate().toDateString()} scholarshipURL={scholarship.URL}/>
+            <ScholarshipCard scholarshipName={scholarship.Name} scholarshipDescription={scholarship.Description} scholarshipAmount={scholarship.Amount} scholarshipDeadline={scholarship.Deadline} scholarshipURL={scholarship.URL}/>
           ))
         }
       </Row>
