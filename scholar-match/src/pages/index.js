@@ -1,11 +1,11 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import db from '../firebase.config';
+import { useState } from 'react';
+//import db from '../firebase.config';
 //import Searchbar from "../components/searchBar";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Card from 'react-bootstrap/Card'
+/*import Card from 'react-bootstrap/Card'
 import CardGroup from 'react-bootstrap/CardGroup'
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button'*/
 import '../styling_sheets/homePage.css';
 import {Row } from "antd";
 import ScholarshipCard from "../components/HomePage/Card"
@@ -17,8 +17,12 @@ const Home = () => {
     ...scholarship
   }));
 
-  const [scholarships, setScholsarships] = useState(SCHOLARSHIPS);
+  const [scholarships] = useState(SCHOLARSHIPS);
   //const [dbscholarships, setdbscholarships] = useState([]);
+
+  scholarships.forEach(scholarship => {
+    console.log(scholarship.URL)
+  })
 
   /*useEffect(() => {
     Fetchdata();

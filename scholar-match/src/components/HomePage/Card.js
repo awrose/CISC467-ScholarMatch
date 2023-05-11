@@ -6,21 +6,21 @@ import {useNavigate} from "react-router-dom";
 import Button from 'react-bootstrap/Button'
 import { useState } from 'react';
 
-const { Meta } = Card;
+//const { Meta } = Card;
 
 const GridCard = ({scholarshipName, scholarshipDescription, scholarshipAmount, scholarshipDeadline, scholarshipURL}) => {
 
-    const [showModal, setShowModal] = useState(false);
+    //const [showModal, setShowModal] = useState(false);
 
     let navigate = useNavigate();
     const routeChange = () =>{
-        let path = "google.com";
+        let path = scholarshipURL;
         navigate(path);
     }
 
     const handleCardClick = () =>{
         //do something
-        setShowModal(showModal => !showModal);
+        //setShowModal(showModal => !showModal);
     }
 
     return (
