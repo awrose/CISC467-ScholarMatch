@@ -28,6 +28,7 @@ const Home = ({scholarships, setScholarships}) => {
       })
     })
   }*/
+
   return (
     <div>
       <Row gutter = {[20, 20]}>
@@ -40,5 +41,21 @@ const Home = ({scholarships, setScholarships}) => {
     </div>
   );
 };
+
         
 export default Home;        
+
+/*
+  return (
+    <div>
+      <Row gutter = {[20, 20]}>
+        {
+          scholarships.map((scholarship) => (
+            <ScholarshipCard scholarship = {scholarship} scholarships = {scholarships} setScholarships = {setScholarships} />
+          ))
+        }
+      </Row>
+    </div>
+  );
+};
+*/

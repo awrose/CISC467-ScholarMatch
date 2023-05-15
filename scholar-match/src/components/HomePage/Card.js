@@ -17,6 +17,7 @@ const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
         //scholarship.Saved = true;
         //check if the scholarship is already in savedscholarships
         setScholarships(scholarships.map(oldScholarship => oldScholarship.Id === scholarship.Id ? {...oldScholarship, Saved: true} : {...oldScholarship}))
+        alert("Scholarship Successfully Saved")
         
         console.log(scholarships)
 

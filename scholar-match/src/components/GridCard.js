@@ -13,6 +13,7 @@ const GridCard = ({scholarship, scholarships, setScholarships}) => {
     //let navigate = useNavigate();
     const deleteSavedScholarship = () =>{
         setScholarships(scholarships.map(oldScholarship => oldScholarship.Id === scholarship.Id ? {...oldScholarship, Saved: false} : {...oldScholarship}))
+        alert("Scholarship Successfully Unsaved")
     }
 
     const handleCardClick = () =>{
