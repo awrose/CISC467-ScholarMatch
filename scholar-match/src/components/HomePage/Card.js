@@ -8,14 +8,15 @@ import { useState } from 'react';
 
 //const { Meta } = Card;
 
-const GridCard = ({scholarshipName, scholarshipDescription, scholarshipAmount, scholarshipDeadline, scholarshipURL}) => {
+const GridCard = ({scholarship}) => {
 
     //const [showModal, setShowModal] = useState(false);
 
-    let navigate = useNavigate();
-    const routeChange = () =>{
-        let path = scholarshipURL;
-        navigate(path);
+    //let navigate = useNavigate();
+    const saveScholarship = () =>{
+        scholarship.Saved = true;
+        console.log("scholarship saved!")
+        console.log(scholarship.Saved)
     }
 
     const handleCardClick = () =>{
@@ -27,16 +28,16 @@ const GridCard = ({scholarshipName, scholarshipDescription, scholarshipAmount, s
         <div onClick={handleCardClick} class="mt-2">
             <Col>
                 <Card hoverable style={{ width: 330 }} cover={<img src={scholarshipLogo} alt="pic of grad cap"></img>}>
-                    <h3>{scholarshipName}</h3>
-                    <h5 >${scholarshipAmount}</h5>
-                    <h6 ><b>Deadline: </b>{scholarshipDeadline}</h6>
-                    <p>{scholarshipDescription}</p>
-                    <a class = "btn btn-primary mt-2" href={scholarshipURL} role="button">Apply</a>
+                    <h3>{scholarship.Name}</h3>
+                    <h5 >${scholarship.Amount}</h5>
+                    <h6 ><b>Deadline: </b>{scholarship.Deadline}</h6>
+                    <p>{scholarship.Description}</p>
+                    <a class = "btn btn-primary mt-2" href={scholarship.URL} role="button">Apply</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;
-                    <Button color = "primary" onClick={routeChange}>Save</Button>
+                    <Button color = "primary" onClick={saveScholarship}>Save</Button>
                 </Card>
             </Col>
         </div>

@@ -41,7 +41,7 @@ const Home = () => {
       <Row gutter = {[20, 20]}>
         {
           scholarships.map((scholarship) => (
-            <ScholarshipCard scholarshipName={scholarship.Name} scholarshipDescription={scholarship.Description} scholarshipAmount={scholarship.Amount} scholarshipDeadline={scholarship.Deadline} scholarshipURL={scholarship.URL}/>
+            <ScholarshipCard scholarship = {scholarship}/>
           ))
         }
       </Row>
