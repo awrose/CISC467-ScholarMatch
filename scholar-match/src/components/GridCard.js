@@ -6,15 +6,13 @@ import Button from 'react-bootstrap/Button'
 
 const { Meta } = Card;
 
-const GridCard = ({scholarship}) => {
+const GridCard = ({scholarship, scholarships, setScholarships}) => {
 
     //const [showModal, setShowModal] = useState(false);
 
     //let navigate = useNavigate();
-    const saveScholarship = () =>{
-        scholarship.Saved = true;
-        console.log("scholarship saved!")
-        console.log(scholarship.Saved)
+    const deleteSavedScholarship = () =>{
+        setScholarships(scholarships.map(oldScholarship => oldScholarship.Id === scholarship.Id ? {...oldScholarship, Saved: false} : {...oldScholarship}))
     }
 
     const handleCardClick = () =>{
@@ -33,9 +31,8 @@ const GridCard = ({scholarship}) => {
                     <a class = "btn btn-primary mt-2" href={scholarship.URL} role="button">Apply</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;
-                    <Button color = "primary" onClick={saveScholarship}>Save</Button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <Button color = "primary" onClick={deleteSavedScholarship}>Unsave</Button>
                 </Card>
             </Col>
         </div>

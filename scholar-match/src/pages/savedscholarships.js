@@ -12,7 +12,7 @@ const SavedScholarships = ({scholarships, setScholarships}) => {
       <Row gutter={[20,20]}> 
         {
           savedScholarships.map((scholarship) => (
-            <GridCard scholarship = {scholarship} />
+            <GridCard scholarship = {scholarship} scholarships={scholarships} setScholarships={setScholarships} />
           ))
         }
       </Row> 
