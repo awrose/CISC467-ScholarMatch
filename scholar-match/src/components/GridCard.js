@@ -3,17 +3,20 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import scholarshipLogo from '../images/gradcap.png'
 import Button from 'react-bootstrap/Button'
+import { useState} from 'react';
 
 const { Meta } = Card;
 
 const GridCard = ({scholarship, scholarships, setScholarships}) => {
 
     //const [showModal, setShowModal] = useState(false);
+    const [disabled, setDisabled] = useState(false);
 
     //let navigate = useNavigate();
     const deleteSavedScholarship = () =>{
         setScholarships(scholarships.map(oldScholarship => oldScholarship.Id === scholarship.Id ? {...oldScholarship, Saved: false} : {...oldScholarship}))
         alert("Scholarship Successfully Unsaved")
+        setDisabled(true)
     }
 
     const handleCardClick = () =>{
@@ -29,11 +32,11 @@ const GridCard = ({scholarship, scholarships, setScholarships}) => {
                     <h5 >${scholarship.Amount}</h5>
                     <h6 ><b>Deadline: </b>{scholarship.Deadline}</h6>
                     <p>{scholarship.Description}</p>
-                    <a class = "btn btn-primary mt-2" href={scholarship.URL} role="button">Apply</a>
+                    <a class = "btn btn-primary mt-2" href={scholarship.URL} role="button">APPLY</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <Button color = "primary" onClick={deleteSavedScholarship}>Unsave</Button>
+                    <Button disabled={disabled} color = "primary" onClick={deleteSavedScholarship}>Unsave</Button>
                 </Card>
             </Col>
         </div>

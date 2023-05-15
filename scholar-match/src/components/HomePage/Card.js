@@ -11,6 +11,7 @@ import { useState } from 'react';
 const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
 
     //const [showModal, setShowModal] = useState(false);
+    const [disabled, setDisabled] = useState(false);
 
     //let navigate = useNavigate();
     const saveScholarship = () =>{
@@ -18,6 +19,7 @@ const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
         //check if the scholarship is already in savedscholarships
         setScholarships(scholarships.map(oldScholarship => oldScholarship.Id === scholarship.Id ? {...oldScholarship, Saved: true} : {...oldScholarship}))
         alert("Scholarship Successfully Saved")
+        setDisabled(true)
         
         console.log(scholarships)
 
@@ -41,7 +43,7 @@ const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;
-                    <Button color = "primary" onClick={saveScholarship}>Save</Button>
+                    <Button disabled = {disabled} color = "primary" onClick={saveScholarship}>Save</Button>
                 </Card>
             </Col>
         </div>
