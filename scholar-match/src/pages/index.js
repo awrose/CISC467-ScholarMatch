@@ -12,17 +12,9 @@ import ScholarshipCard from "../components/HomePage/Card"
 import loadedScholarships from "../scholarships.json"
 
   
-const Home = () => {
-  const SCHOLARSHIPS = loadedScholarships.map((scholarship) => ({
-    ...scholarship
-  }));
+const Home = ({scholarships, setScholarships}) => {
 
-  const [scholarships] = useState(SCHOLARSHIPS);
   //const [dbscholarships, setdbscholarships] = useState([]);
-
-  scholarships.forEach(scholarship => {
-    console.log(scholarship.URL)
-  })
 
   /*useEffect(() => {
     Fetchdata();
@@ -41,7 +33,7 @@ const Home = () => {
       <Row gutter = {[20, 20]}>
         {
           scholarships.map((scholarship) => (
-            <ScholarshipCard scholarship = {scholarship}/>
+            <ScholarshipCard scholarship = {scholarship} scholarships = {scholarships} setScholarships = {setScholarships} />
           ))
         }
       </Row>

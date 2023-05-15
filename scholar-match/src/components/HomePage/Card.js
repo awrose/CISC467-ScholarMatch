@@ -8,15 +8,18 @@ import { useState } from 'react';
 
 //const { Meta } = Card;
 
-const GridCard = ({scholarship}) => {
+const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
 
     //const [showModal, setShowModal] = useState(false);
 
     //let navigate = useNavigate();
     const saveScholarship = () =>{
-        scholarship.Saved = true;
-        console.log("scholarship saved!")
-        console.log(scholarship.Saved)
+        //scholarship.Saved = true;
+        //check if the scholarship is already in savedscholarships
+        setScholarships(scholarships.map(oldScholarship => oldScholarship.Id === scholarship.Id ? {...oldScholarship, Saved: true} : {...oldScholarship}))
+        
+        console.log(scholarships)
+
     }
 
     const handleCardClick = () =>{
@@ -44,4 +47,4 @@ const GridCard = ({scholarship}) => {
     );
 };
 
-export default GridCard;
+export default ScholarshipCard;
