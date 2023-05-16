@@ -1,61 +1,80 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import db from '../firebase.config';
-//import Searchbar from "../components/searchBar";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Card from 'react-bootstrap/Card'
-import CardGroup from 'react-bootstrap/CardGroup'
-import Button from 'react-bootstrap/Button'
 import '../styling_sheets/homePage.css';
+import {Row } from "antd";
+import ScholarshipCard from "../components/HomePage/Card"
+import { Select, Space, Input } from 'antd'
+import { useState } from "react";
 
   
-const Home = () => {
-  const [scholarships, setScholsarships] = useState([]);
+const Home = ({scholarships, setScholarships}) => {
 
-  useEffect(() => {
-    Fetchdata();
-  }, [])
+  const [displayedScholarships, setDisplayedScholarships] = useState(scholarships)
 
-  const Fetchdata = async() =>{
-    db.collection("Scholarships").get().then((querySnapshot) => {
-      querySnapshot.forEach(element => {
-        var data = element.data();
-        setScholsarships(arr => [...arr, data])
-      })
-    })
+  const options = [
+    {label: "Due this Week", value: "dueWeek"}, 
+    {label: "Due this Month", value: "dueMonth"}, 
+    {label: "Due this Year", value: "dueYear"}, 
+    {label: "Started Applications", value: "startedApp"}, 
+    {label: "Not Started Applications", value: "notStartedApp"}
+  ]
+
+  const { Search } = Input;
+
+  const onSearch = (value) => {
+    console.log(value)
+    //setDisplayedScholarships(displayedScholarships.filter(scholarship => scholarship.Name.search(value) === false))
   }
+
+  const handleMultiSelect = (value) => {
+    //filter it
+    console.log(value)
+    if(value.includes('dueWeek')){
+      //find the current date, add 7 to this date
+      //filter by this date 
+    }
+
+    if(value.includes('dueMonth')){
+      //find the current date, find all within the month 
+      //filter by this date
+    }
+
+    if(value.includes('dueYear')){
+      //find current date, all values within the year
+      //filter by this date
+    }
+
+    if(value.includes('startedApp')){
+      //filter by started 
+    }
+
+    if(value.includes('notStartedApp')){
+      //filter by started
+    }
+}
+
+
+
   return (
     <div>
-      <div class="container text-center">
-      <div class="row mb-2">
+      <div style={{display: 'flex', justifyContent: 'space-between', padding: '10px 20px 10px 20px'}}>
+        <Space direction="vertical">
+          <Search allowClear bordered size = "large" placeholder = "Search Scholarships" onSearch = {onSearch} style={{width: 700}} />
+        </Space>
+        <Space style={{width: '20%'}} direction="vertical">
+          <Select bordered size = "large" mode="multiple" allowClear style={{width: '100%'}} placeholder="Filter Scholarships" onChange={handleMultiSelect} options={options}></Select>
+      </Space>
+      </div>
+      <Row gutter = {[20, 20]}>
         {
-          scholarships.map((scholarship) => (
-            <div class="col">
-              <div class = "card text-center">
-                <div class="card-block">
-                  <h4 class = "card-title">{scholarship.Name}</h4>
-                  <h6>${scholarship.Amount}</h6>
-                  <h6><b>Deadline:</b></h6>
-                  <p class="card-text">
-                    Short Description
-                  </p>
-                  </div>
-                  <div class="card-footer">
-                    <div class="container">
-                      <div class="buttons">
-                        <a class="btn btn-primary" href="#" role="button">Apply</a>
-                        <button class="btn btn-primary">Save</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
+          displayedScholarships.map((scholarship) => (
+            <ScholarshipCard scholarship = {scholarship} scholarships = {scholarships} setScholarships = {setScholarships} />
           ))
         }
-        </div>
-      </div>
+      </Row>
     </div>
   );
 };
+
         
 export default Home;        
