@@ -25,9 +25,6 @@ const GridCard = ({scholarship, scholarships, setScholarships}) => {
         setShowModal(!showModal)
     }
 
-
-const GridCard = ({scholarshipName, scholarshipDescription, scholarshipAmount, scholarshipDeadline, scholarshipURL}) => {
-
     return (
         <div>
             <div class="mt-2">
