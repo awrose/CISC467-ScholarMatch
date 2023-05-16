@@ -6,6 +6,7 @@ import { useState} from 'react';
 
 const { Meta } = Card;
 
+
 const GridCard = ({scholarship, scholarships, setScholarships}) => {
     const [disabled, setDisabled] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -24,11 +25,15 @@ const GridCard = ({scholarship, scholarships, setScholarships}) => {
         setShowModal(!showModal)
     }
 
+
+const GridCard = ({scholarshipName, scholarshipDescription, scholarshipAmount, scholarshipDeadline, scholarshipURL}) => {
+
     return (
         <div>
             <div class="mt-2">
             <Col>
                 <Card hoverable style={{ width: 330 }} cover={<img src={scholarshipLogo} alt="pic of grad cap"></img>}>
+
                     <h3>{scholarship.Name}</h3>
                     <h5 >${scholarship.Amount}</h5>
                     <h6 ><b>Deadline: </b>{scholarship.Deadline}</h6>
@@ -40,6 +45,8 @@ const GridCard = ({scholarship, scholarships, setScholarships}) => {
                         <Button href = {scholarship.URL} type = "primary" >Apply</Button>
                         <Button disabled = {disabled} type = "primary" onClick={deleteSavedScholarship}>Unsave</Button>
                     </div>
+                    <Meta title={scholarshipName} description={scholarshipDescription} />
+                        <a class="btn btn-primary mt-2" href={scholarshipURL} role="button">Apply</a>
                 </Card>
             </Col>
             <Modal 
