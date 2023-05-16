@@ -1,8 +1,7 @@
-import { Card, Col, Modal } from 'antd'
+import { Card, Col, Modal, Button } from 'antd'
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import scholarshipLogo from '../images/gradcap.png'
-import Button from 'react-bootstrap/Button'
 import { useState} from 'react';
 
 const { Meta } = Card;
@@ -16,6 +15,9 @@ const GridCard = ({scholarship, scholarships, setScholarships}) => {
         setScholarships(scholarships.map(oldScholarship => oldScholarship.Id === scholarship.Id ? {...oldScholarship, Saved: false} : {...oldScholarship}))
         alert("Scholarship Successfully Unsaved")
         setDisabled(true)
+        if(showModal){
+            changeShowModal()
+        }
     }
 
     const changeShowModal = () =>{
@@ -23,25 +25,29 @@ const GridCard = ({scholarship, scholarships, setScholarships}) => {
     }
 
     return (
-        <div onClick={changeShowModal} class="mt-2">
+        <div class="mt-2">
             <Col>
                 <Card hoverable style={{ width: 330 }} cover={<img src={scholarshipLogo} alt="pic of grad cap"></img>}>
                     <h3>{scholarship.Name}</h3>
                     <h5 >${scholarship.Amount}</h5>
                     <h6 ><b>Deadline: </b>{scholarship.Deadline}</h6>
                     <p>{scholarship.Description}</p>
-                    <a class = "btn btn-primary mt-2" href={scholarship.URL} role="button">APPLY</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <Button disabled={disabled} color = "primary" onClick={deleteSavedScholarship}>Unsave</Button>
+                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                        <Button style={{align: "center", display: "block"}} disabled = {disabled} variant = "primary" onClick={changeShowModal}>More</Button>
+                    </div>
+                    <div style={{display: 'flex', justifyContent:'space-between'}}>
+                        <Button href = {scholarship.URL} type = "primary" >Apply</Button>
+                        <Button disabled = {disabled} type = "primary" onClick={deleteSavedScholarship}>Unsave</Button>
+                    </div>
                 </Card>
             </Col>
             <Modal 
                 open={showModal} 
                 footer={[
-                    <a class = "btn btn-primary mt-2" href={scholarship.URL} role="button">Apply</a>,
-                    <Button disabled = {disabled} variant = "primary" onClick={changeShowModal}>Save</Button>
+                    <div style={{display: 'flex', justifyContent:'space-between'}}>
+                        <Button href = {scholarship.URL} type = "primary" >APPLY</Button>
+                        <Button disabled = {disabled} type = "primary" onClick={deleteSavedScholarship}>Unsave</Button>
+                    </div>
                 ]}>
                     <h3 style={{textAlign: 'center'}}>{scholarship.Name}</h3>
                     <div style={{display: 'flex', justifyContent:'space-between'}}>
