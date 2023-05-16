@@ -7,16 +7,27 @@ import { BrowserRouter as Router, Routes, Route }
 import Home from './pages';
 import Login from './pages/login';
 import SavedScholarships from './pages/savedscholarships';
+import { useState } from "react";
+import loadedScholarships from "./scholarships.json"
 
 
 function App() {
+
+  const SCHOLARSHIPS = loadedScholarships.map((scholarship) => ({
+    ...scholarship
+  }));
+
+  const [scholarships, setScholarships] = useState(SCHOLARSHIPS);
+
+  
+
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route exact path='/' element={<Home />} />
+      <Route exact path='/' exact element={<Home scholarships = {scholarships} setScholarships = {setScholarships}/>} />
         <Route path='/login' element={<Login />} />
-        <Route path='/savedscholarships' element={<SavedScholarships />} />
+        <Route path='/savedscholarships' element={<SavedScholarships scholarships = {scholarships} setScholarships = {setScholarships}/>} />
       </Routes>
     </Router>
   );

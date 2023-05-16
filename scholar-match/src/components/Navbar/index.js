@@ -1,13 +1,15 @@
 import React from "react";
 import { Nav, NavLink, NavMenu } 
     from "./NavbarElements";
+import "./navbar.css";
   
 const Navbar = () => {
   return (
     <>
       <Nav>
+        <h1>Scholar Match</h1>
         <NavMenu>
-          <NavLink to="/main" activeStyle>
+          <NavLink to="/" activeStyle>
             Home
           </NavLink>
           <NavLink to="/login" activeStyle>
