@@ -42,8 +42,6 @@ const GridCard = ({scholarship, scholarships, setScholarships}) => {
                         <Button href = {scholarship.URL} type = "primary" >Apply</Button>
                         <Button disabled = {disabled} type = "primary" onClick={deleteSavedScholarship}>Unsave</Button>
                     </div>
-                    <Meta title={scholarshipName} description={scholarshipDescription} />
-                        <a class="btn btn-primary mt-2" href={scholarshipURL} role="button">Apply</a>
                 </Card>
             </Col>
             <Modal 
