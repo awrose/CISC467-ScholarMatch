@@ -25,7 +25,8 @@ const GridCard = ({scholarship, scholarships, setScholarships}) => {
     }
 
     return (
-        <div class="mt-2">
+        <div>
+            <div class="mt-2">
             <Col>
                 <Card hoverable style={{ width: 330 }} cover={<img src={scholarshipLogo} alt="pic of grad cap"></img>}>
                     <h3>{scholarship.Name}</h3>
@@ -61,20 +62,10 @@ const GridCard = ({scholarship, scholarships, setScholarships}) => {
                     <p>{scholarship.Description}</p>
             </Modal>
         </div>
+
+        </div>
+        
     );
 };
 
 export default GridCard;
-
-/*const GridCard = ({}) => {
-    return ( 
-        <div class="mt-2">
-            <Col>
-                <Card hoverable style={{ width: 330 }} cover={<img src={scholarshipLogo} alt="pic of grad cap"></img>}>
-                    <Meta title="Sample Saved Scholarship" description="More info will be put about each scholarship here" />
-                        <a class="btn btn-primary mt-2" href="#" role="button">Apply</a>
-                </Card>
-            </Col>
-        </div>
-    );
-};*/

@@ -1,36 +1,35 @@
 import React from 'react';
-import { useState } from 'react';
-//import db from '../firebase.config';
-//import Searchbar from "../components/searchBar";
 import 'bootstrap/dist/css/bootstrap.min.css'
-/*import Card from 'react-bootstrap/Card'
-import CardGroup from 'react-bootstrap/CardGroup'
-import Button from 'react-bootstrap/Button'*/
 import '../styling_sheets/homePage.css';
 import {Row } from "antd";
 import ScholarshipCard from "../components/HomePage/Card"
-import loadedScholarships from "../scholarships.json"
+import { Select, Space } from 'antd'
 
   
 const Home = ({scholarships, setScholarships}) => {
+  const options = [
+    {label: "Due this Week", value: "dueWeek"}, 
+    {label: "Due this Month", value: "dueMonth"}, 
+    {label: "Due this Year", value: "dueYear"}, 
+    {label: "Started Applications", value: "startedApp"}, 
+    {label: "Not Started Applications", value: "notStartedApp"}
+  ]
 
-  //const [dbscholarships, setdbscholarships] = useState([]);
+  const handleMultiSelect = (value) => {
+    //filter it
+    console.log(value)
+    if(value.includes('dueWeek')){
+      console.log('YAY')
+    }
+}
 
-  /*useEffect(() => {
-    Fetchdata();
-  }, [])
- 
-  const Fetchdata = async() =>{
-    db.collection("Scholarships").get().then((querySnapshot) => {
-      querySnapshot.forEach(element => {
-        var data = element.data();
-        setdbscholarships(arr => [...arr, data])
-      })
-    })
-  }*/
+
 
   return (
     <div>
+      <Space style={{width: '100%'}} direction="vertical">
+          <Select mode="multiple" allowClear style={{width: '100%'}} placeholder="Please Select" onChange={handleMultiSelect} options={options}></Select>
+      </Space>
       <Row gutter = {[20, 20]}>
         {
           scholarships.map((scholarship) => (
@@ -44,18 +43,3 @@ const Home = ({scholarships, setScholarships}) => {
 
         
 export default Home;        
-
-/*
-  return (
-    <div>
-      <Row gutter = {[20, 20]}>
-        {
-          scholarships.map((scholarship) => (
-            <ScholarshipCard scholarship = {scholarship} scholarships = {scholarships} setScholarships = {setScholarships} />
-          ))
-        }
-      </Row>
-    </div>
-  );
-};
-*/

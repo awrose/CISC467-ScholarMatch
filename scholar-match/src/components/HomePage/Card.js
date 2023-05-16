@@ -46,7 +46,7 @@ const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
                 onCancel={changeShowModal}
                 footer={[
                     <div style={{display: 'flex', justifyContent:'space-between'}}>
-                        <Button href = {scholarship.URL} type = "primary" >APPLY</Button>
+                            <Button href = {scholarship.URL} type = "primary" >APPLY</Button>
                         <Button disabled = {disabled} type = "primary" onClick={saveScholarship}>Save</Button>
                     </div>
                 ]}>
