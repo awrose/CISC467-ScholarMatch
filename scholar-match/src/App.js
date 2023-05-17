@@ -7,19 +7,30 @@ import { BrowserRouter as Router, Routes, Route }
 import Home from './pages';
 import Login from './pages/login';
 import SavedScholarships from './pages/savedscholarships';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import loadedScholarships from "./scholarships.json"
 
 
 function App() {
 
+
   const SCHOLARSHIPS = loadedScholarships.map((scholarship) => ({
     ...scholarship
   }));
+  const saveDataKey = "scholar-match"
+  const previousData = localStorage.getItem(saveDataKey)
+  let data = SCHOLARSHIPS
 
-  const [scholarships, setScholarships] = useState(SCHOLARSHIPS);
+  if(previousData !== null){
+    data = JSON.parse(previousData)
+  }
 
-  
+
+  const [scholarships, setScholarships] = useState(data);
+
+  useEffect(() => {
+    localStorage.setItem(saveDataKey, JSON.stringify(scholarships))
+  }, [scholarships])
 
   return (
     <Router>

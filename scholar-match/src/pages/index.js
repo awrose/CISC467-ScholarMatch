@@ -9,7 +9,9 @@ import { useState } from "react";
   
 const Home = ({scholarships, setScholarships}) => {
 
-  const [displayedScholarships, setDisplayedScholarships] = useState(scholarships)
+  const [displayedScholarships ] = useState(scholarships)
+
+  console.log(displayedScholarships)
 
   const options = [
     {label: "Due this Week", value: "dueWeek"}, 

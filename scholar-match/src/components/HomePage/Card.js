@@ -7,13 +7,12 @@ import { useState } from 'react';
 
 const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
 
-    const [disabled, setDisabled] = useState(false);
+    //const [disabled, setDisabled] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
     const saveScholarship = () =>{
         setScholarships(scholarships.map(oldScholarship => oldScholarship.Id === scholarship.Id ? {...oldScholarship, Saved: true} : {...oldScholarship}))
         alert("Scholarship Successfully Saved")
-        setDisabled(true)
         if(showModal){
             changeShowModal()
         }
@@ -36,7 +35,7 @@ const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
                     </div>
                     <div style={{display: 'flex', justifyContent:'space-between'}}>
                         <Button href = {scholarship.URL} type = "primary" >Apply</Button>
-                        <Button disabled = {disabled} type = "primary" onClick={saveScholarship}>Save</Button>
+                        <Button disabled = {scholarship.Saved} type = "primary" onClick={saveScholarship}>Save</Button>
                     </div>
                 </Card>
             </Col>
@@ -47,7 +46,7 @@ const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
                 footer={[
                     <div style={{display: 'flex', justifyContent:'space-between'}}>
                             <Button href = {scholarship.URL} type = "primary" >APPLY</Button>
-                        <Button disabled = {disabled} type = "primary" onClick={saveScholarship}>Save</Button>
+                        <Button disabled = {scholarship.Saved} type = "primary" onClick={saveScholarship}>Save</Button>
                     </div>
                 ]}>
                     <h3 style={{textAlign: 'center'}}>{scholarship.Name}</h3>
