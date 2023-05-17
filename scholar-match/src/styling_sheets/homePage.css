@@ -1,3 +1,25 @@
 .btn-space{
     margin-right: 5px;
 }
+
+.splitLeft{
+    height: 100%;
+    width: 25%;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    left: 0;
+}
+
+
+
+
+.splitRight{
+    height: 100%;
+    width: 70%;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    right: 0;
+}
+

@@ -29,7 +29,6 @@ const GridCard = ({scholarship, scholarships, setScholarships}) => {
             <div class="mt-2">
             <Col>
                 <Card hoverable style={{ width: 330 }} cover={<img src={scholarshipLogo} alt="pic of grad cap"></img>}>
-
                     <h3>{scholarship.Name}</h3>
                     <h5 >${scholarship.Amount}</h5>
                     <h6 ><b>Deadline: </b>{scholarship.Deadline}</h6>
