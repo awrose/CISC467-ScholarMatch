@@ -10,11 +10,17 @@ import { useState } from "react";
   
 const Home = ({scholarships, setScholarships}) => {
 
-  const [displayedScholarships ] = useState(scholarships)
+  const [displayedScholarships, setDisplayedScholarships ] = useState(scholarships)
   const { Search } = Input;
 
   const onSearch = (value) => {
-    //setDisplayedScholarships(displayedScholarships.filter(scholarship => scholarship.Name.search(value) === false))
+    console.log(value);
+
+    if(value !== ''){
+      setDisplayedScholarships(displayedScholarships.filter(scholarship => scholarship.Name.search(value) !== -1))
+    }else{
+      setDisplayedScholarships(scholarships);
+    }
   }
 
   const handleMultiSelect = (value) => {

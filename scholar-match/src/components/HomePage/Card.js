@@ -2,6 +2,7 @@ import { Card, Col, Modal, Button } from 'antd'
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import scholarshipLogo from '../../images/gradcap.png'
+import '../../styling_sheets/homePage.css';
 //
 import { useState } from 'react';
 
@@ -29,7 +30,7 @@ const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
                     <h3>{scholarship.Name}</h3>
                     <h5 >${scholarship.Amount}</h5>
                     <h6 ><b>Deadline: </b>{scholarship.Deadline}</h6>
-                    <p>{scholarship.Description}</p>
+                    <p class="scroll">{scholarship.Description}</p>
                     <div style={{display: 'flex', justifyContent: 'center'}}>
                         <Button style={{align: "center", display: "block"}} variant = "primary" onClick={changeShowModal}>More</Button>
                     </div>
