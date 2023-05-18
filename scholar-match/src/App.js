@@ -9,6 +9,7 @@ import Login from './pages/login';
 import SavedScholarships from './pages/savedscholarships';
 import { useState, useEffect } from "react";
 import loadedScholarships from "./scholarships.json"
+import MakeAccount from './components/makeAccount/makeAccount';
 
 
 function App() {
@@ -41,9 +42,11 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-      <Route exact path='/' exact element={<Home scholarships = {scholarships} setScholarships = {setScholarships}/>} />
+      <Route exact path='/' element={<Home scholarships = {scholarships} setScholarships = {setScholarships}/>} />
         <Route path='/login' element={<Login />} />
+        <Route path='/makeAccount' element={<MakeAccount/>} />
         <Route path='/savedscholarships' element={<SavedScholarships scholarships = {scholarships} setScholarships = {setScholarships}/>} />
+        {/* <Route path='/makeAccount' element={<MakeAccount/>} /> */}
       </Routes>
     </Router>
   );
