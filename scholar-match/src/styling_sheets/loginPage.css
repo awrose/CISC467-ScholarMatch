@@ -47,8 +47,9 @@
     background-color: bisque;
     max-width: 10%;
     float: left;
-    margin-right: 20px;
-    margin-top: 19vw;
+    margin-left: 80px;
+    margin-top: 25vw;
+    
   }
 
   .contGoogle{
@@ -124,6 +125,13 @@
     display: block;
     margin-right: 200px;
    
+  }
+
+  .forgotPassword{
+    margin-left: 39vw;
+    margin-top: 4.6vh;
+    background-color: #FFDEE9;
+    width:200px;
   }
 /* 
   

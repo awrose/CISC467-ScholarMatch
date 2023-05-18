@@ -65,7 +65,9 @@ useEffect(() => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </Form.Group>
+                    <br></br>
                     <Button onClick={updateInventory}>Submit</Button>
+                    <br></br>
                     <br></br>
                     <Button onClick={changeRoute}>Login page</Button>
         </div>

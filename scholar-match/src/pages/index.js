@@ -84,7 +84,7 @@ const Home = ({scholarships, setScholarships}) => {
   }
 
   return (
-    <div>
+    <div className='bbody'>
       <div style={{display: 'flex', justifyContent: 'space-between', padding: '10px 20px 10px 20px'}}>
         <Space direction="vertical">
           <Search allowClear bordered size = "large" placeholder = "Search Scholarships" onSearch = {onSearch} style={{width: 400}} />

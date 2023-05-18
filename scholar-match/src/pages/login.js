@@ -10,6 +10,7 @@ import "firebase/compat/messaging";
 import "firebase/compat/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 let inventoryData = [{username:"eric", password:"123"}]
 const saveDataKey = "MY-PAGE-USRAS-1";
@@ -77,22 +78,27 @@ const handleMakeAccount = () => {
         <div className='signInAuth'>
         <Button className="button" onClick={handleLogin}>
           
-                            LOGIN NOW on
+                            LOGIN NOW 
                         </Button>
         </div>
-
-        <div className='forgotPassword'>
-        <a href="https://www.google.com/">Forgot password?</a>
-        </div>
+        <br></br>
+        <br></br>
+        <br></br>
         <h2>{username}</h2>
         <div className='m'>
           <Button className='makeAccountButton' onClick={handleMakeAccount}>Make Account</Button>
         </div>
 
         </div>
+        <div className='forgotPassword'>
+        <Link to="/makeAccount">
+        <Button className='makeAccountButton'>forgot Password?</Button>
+      </Link>
+        </div>
 
       </div>
       </div>
+      
     </div>
   );
 };
