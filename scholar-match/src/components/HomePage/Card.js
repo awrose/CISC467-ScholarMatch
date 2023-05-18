@@ -27,7 +27,7 @@ const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
                 <Card hoverable style={{ width: 330 }} cover={<img src={scholarshipLogo} alt="pic of grad cap"></img>}>
                     <h3>{scholarship.Name}</h3>
                     <h5 >${scholarship.Amount}</h5>
-                    <h6 ><b>Deadline: </b>{scholarship.Deadline.toLocaleString()}</h6>
+                    <h6 ><b>Deadline: </b>{new Date(scholarship.Deadline).toDateString()}</h6>
                     <p class="scroll">{scholarship.Description}</p>
                     <div style={{display: 'flex', justifyContent: 'center'}}>
                         <Button style={{align: "center", display: "block"}} variant = "primary" onClick={changeShowModal}>More</Button>
@@ -51,7 +51,7 @@ const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
                     <h3 style={{textAlign: 'center'}}>{scholarship.Name}</h3>
                     <div style={{display: 'flex', justifyContent:'space-between'}}>
                         <h5>${scholarship.Amount}</h5>
-                        <h5><b>Deadline: </b>{scholarship.Deadline}</h5>
+                        <h5><b>Deadline: </b>{new Date(scholarship.Deadline).toDateString()}</h5>
                     </div>
                     <h6>Amount of Awards Offered: {scholarship.Awards}</h6>
                     <h5>Eligibility: </h5>

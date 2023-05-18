@@ -14,10 +14,10 @@ import loadedScholarships from "./scholarships.json"
 function App() {
 
 
-  /*const SCHOLARSHIPS = loadedScholarships.map((scholarship) => ({
+  const SCHOLARSHIPS = loadedScholarships.map((scholarship) => ({
     ...scholarship
   }));
-  const saveDataKey = "scholar-match!!"
+  const saveDataKey = "save-key"
   const previousData = localStorage.getItem(saveDataKey)
   let data = SCHOLARSHIPS
 
@@ -30,12 +30,12 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem(saveDataKey, JSON.stringify(scholarships))
-  }, [scholarships])*/
+  }, [scholarships])
 
-  const SCHOLARSHIPS = loadedScholarships.map((scholarship) => ({
+  /*const SCHOLARSHIPS = loadedScholarships.map((scholarship) => ({
     ...scholarship
   }))
-  const [scholarships, setScholarships] = useState(SCHOLARSHIPS);
+  const [scholarships, setScholarships] = useState(SCHOLARSHIPS);*/
 
   return (
     <Router>

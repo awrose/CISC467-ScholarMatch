@@ -25,14 +25,7 @@ const Home = ({scholarships, setScholarships}) => {
     }
   }
 
-  const handleMultiSelect = (value) => {
-    //console.log(value)
-    //value: an array of the values selected 
-    //sort asc - desc
-    if(value.length === 0){
-      setDisplayedScholarships(scholarships);
-    }
-
+  const handleSort = (value) => {
     //alphabetic
     if(value.includes('nameAsc')){
       setDisplayedScholarships([...displayedScholarships].sort(function(a, b){
@@ -86,57 +79,9 @@ const Home = ({scholarships, setScholarships}) => {
         b = parseInt(b.Amount)
         return (a < b)  ? 1 : ((a > b) ? -1: 0);
       }))
-
-      console.log(parseInt("10,000"))
     }
 
-    //category 
-    if(value.includes('women')){
-
-    }
-
-    if(value.includes('lgbtq')){
-
-    }
-
-    if(value.includes('firstGen')){
-
-    }
-
-    if(value.includes('africanAmerican')){
-
-    }
-
-    if(value.includes('hsStudent')){
-
-    }
-
-    if(value.includes('collegeStudent')){
-
-    }
-
-    //due date
-    if(value.includes('dueToday')){
-      //get today's date
-
-
-    }
-
-    if(value.includes('dueWeek')){
-
-    }
-
-    if(value.includes('duemonth')){
-
-    }
-
-    if(value.includes('dueYear')){
-
-    }
   }
-
-
-
 
   return (
     <div>
@@ -144,36 +89,16 @@ const Home = ({scholarships, setScholarships}) => {
         <Space direction="vertical">
           <Search allowClear bordered size = "large" placeholder = "Search Scholarships" onSearch = {onSearch} style={{width: 400}} />
         </Space>
-        <Space style={{width: '20%'}} direction="vertical">
+      <Space style={{width: '20%'}} direction="vertical">
           <Select 
           bordered 
           size = "large" 
-          mode="multiple" 
           allowClear 
           style={{width: '100%'}} 
-          placeholder="Filter Scholarships" 
-          onChange={handleMultiSelect} 
+          placeholder="Sort Scholarships" 
+          onChange={handleSort} 
           options = {[
             {
-              label: 'Due Date',
-              options: [
-                {label: 'Due Today', value: 'dueToday'},
-                {label: 'Due this Week', value: 'dueWeek'},
-                {label: 'Due this Month', value: 'dueMonth'},
-                {label: 'Due this Year', value: 'dueYear'}
-              ]
-            },{
-              label: 'Demographic',
-              options: [
-                {label: 'Women', value: 'women'}, 
-                {label: 'LGBTQ+', value: 'lgbtq'}, 
-                {label: 'First Generation College Student', value: 'firstGen'},
-                {label: 'African American', value: 'africanAmerican'},
-                {label: 'Hispanic', value: 'hispanic'},
-                {label: 'High School Student', value: 'hsStudent'},
-                {label: 'College Student', value: 'collegeStudent'}
-              ]
-            },{
               label: 'Sort',
               options: [
                 {label: 'Scholarship Name A - Z', value: 'nameAsc'},
