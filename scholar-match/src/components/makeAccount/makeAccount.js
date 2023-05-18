@@ -39,7 +39,10 @@ function updateInventory() {
         }
     ]);
     console.log(data);
-    setPath("/login")
+}
+
+function changeRoute(){
+     setPath("/login")
 }
 
 useEffect(() => {
@@ -63,6 +66,8 @@ useEffect(() => {
                         />
                     </Form.Group>
                     <Button onClick={updateInventory}>Submit</Button>
+                    <br></br>
+                    <Button onClick={changeRoute}>Login page</Button>
         </div>
 
     )
