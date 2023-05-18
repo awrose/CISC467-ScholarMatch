@@ -8,14 +8,13 @@ const { Meta } = Card;
 
 
 const GridCard = ({scholarship, scholarships, setScholarships}) => {
-    const [disabled, setDisabled] = useState(false);
+    //const [disabled, setDisabled] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
 
     const deleteSavedScholarship = () =>{
         setScholarships(scholarships.map(oldScholarship => oldScholarship.Id === scholarship.Id ? {...oldScholarship, Saved: false} : {...oldScholarship}))
         alert("Scholarship Successfully Unsaved")
-        setDisabled(true)
         if(showModal){
             changeShowModal()
         }
@@ -30,17 +29,16 @@ const GridCard = ({scholarship, scholarships, setScholarships}) => {
             <div class="mt-2">
             <Col>
                 <Card hoverable style={{ width: 330 }} cover={<img src={scholarshipLogo} alt="pic of grad cap"></img>}>
-
                     <h3>{scholarship.Name}</h3>
                     <h5 >${scholarship.Amount}</h5>
-                    <h6 ><b>Deadline: </b>{scholarship.Deadline}</h6>
+                    <h6 ><b>Deadline: </b>{new Date(scholarship.Deadline).toDateString()}</h6>
                     <p>{scholarship.Description}</p>
                     <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <Button style={{align: "center", display: "block"}} disabled = {disabled} variant = "primary" onClick={changeShowModal}>More</Button>
+                        <Button style={{align: "center", display: "block"}} variant = "primary" onClick={changeShowModal}>More</Button>
                     </div>
                     <div style={{display: 'flex', justifyContent:'space-between'}}>
                         <Button href = {scholarship.URL} type = "primary" >Apply</Button>
-                        <Button disabled = {disabled} type = "primary" onClick={deleteSavedScholarship}>Unsave</Button>
+                        <Button disabled = {!scholarship.Saved} type = "primary" onClick={deleteSavedScholarship}>Unsave</Button>
                     </div>
                 </Card>
             </Col>
@@ -49,13 +47,13 @@ const GridCard = ({scholarship, scholarships, setScholarships}) => {
                 footer={[
                     <div style={{display: 'flex', justifyContent:'space-between'}}>
                         <Button href = {scholarship.URL} type = "primary" >APPLY</Button>
-                        <Button disabled = {disabled} type = "primary" onClick={deleteSavedScholarship}>Unsave</Button>
+                        <Button disabled = {!scholarship.Saved} type = "primary" onClick={deleteSavedScholarship}>Unsave</Button>
                     </div>
                 ]}>
                     <h3 style={{textAlign: 'center'}}>{scholarship.Name}</h3>
                     <div style={{display: 'flex', justifyContent:'space-between'}}>
                         <h5>${scholarship.Amount}</h5>
-                        <h5><b>Deadline: </b>{scholarship.Deadline}</h5>
+                        <h5><b>Deadline: </b>{new Date(scholarship.Deadline).toDateString()}</h5>
                     </div>
                     <h6>Amount of Awards Offered: {scholarship.Awards}</h6>
                     <h5>Eligibility: </h5>
