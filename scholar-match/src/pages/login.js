@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button } from "react-bootstrap";
+import React, { useState }  from 'react';
+import { Button, Form } from "react-bootstrap";
 import student from "../images/loginStudent.jpg";
 import googleSignIn from "../images/google.png";
 import logo from "../images/logo.png"
@@ -9,60 +9,86 @@ import "firebase/compat/auth";
 import "firebase/compat/messaging";
 import "firebase/compat/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+
+let inventoryData = [{username:"eric", password:"123"}]
+const saveDataKey = "MY-PAGE-USRAS-1";
+
+let isUSignedIn = false;
+const userInKey = "MY-PAGE-IF-IN";
+
+// Check if the user's data already exists
+const previousData = localStorage.getItem(saveDataKey);
+// If the data doesn't exist, `getItem` returns null
+if (previousData !== null) {
+  inventoryData = JSON.parse(previousData);
+}
 
 const Login = () => {
-  firebase.initializeApp({
-    apiKey: "AIzaSyD8c7x-yqw10THw01ilxLwhvQLFyacGOtg",
-    authDomain: "scholarmatch-e5043.firebaseapp.com",
-    projectId: "scholarmatch-e5043",
-    storageBucket: "scholarmatch-e5043.appspot.com",
-    messagingSenderId: "785111082002",
-    appId: "1:785111082002:web:ee9263f0e14b3c2399a4cb",
-    measurementId: "G-WVFDR8SMFT"
-});
-const authenticate = firebase.auth();
-const authenticationService = new firebase.auth.GoogleAuthProvider();
+  const setPath = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-const signInBox = () => {
-    authenticate.signInWithPopup(authenticationService);
+const handleLogin = () => {
+  // Finds admin with the matching username and password
+  const admin = inventoryData.find(
+      (admin) =>
+          admin.username === username && admin.password === password
+  );
+
+  if (admin) {
+      // If user is found in json file send them to inventory page
+      setPath("/");
+  } else {
+      // If user is not found, display an error message
+      alert("Invalid username or password");
+  }
 };
+const handleMakeAccount = () => {
+  setPath("/makeAccount")
+}
+
   return (
     <div className='x'>
       <div className='area'>
-      <img src={student} className="image1" />
+      <img src={student} className="image1" alt='' />
 
       <div className='signinarea'>
             <div className='usersigninformarea'>
-            <img src={logo} className="logoimg" />
+            <img src={logo} className="logoimg" alt='' />
             <h2 class='tellSignIn'>Sign in:</h2>
-            <div class="form-group">
-                    <h3 for="exampleInputEmail1">Email address</h3>
-                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-            </div>
-            
-            <div class="form-group">
-              <h3 for="exampleInputPassword1">Password</h3>
-              <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password"/>
-        </div>
+            <Form.Group controlId="formBasicEmail">
+                        <Form.Control
+                            className="forms"
+                            type="text"
+                            placeholder="Email or Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </Form.Group>
+
 
         <div className='signInAuth'>
-        <button type="submit" class="loginclick" onClick={signInBox}>Sign in with google</button>
+        <Button className="button" onClick={handleLogin}>
+          
+                            LOGIN NOW on
+                        </Button>
         </div>
 
         <div className='forgotPassword'>
         <a href="https://www.google.com/">Forgot password?</a>
         </div>
-        <div className='contGoogle'>
-        <img src={googleSignIn} className="google" />
-        </div>
-        </div>
-
-        <div className='makeAccount'>
-          <Button className='makeAccountButton'>Make Account</Button>
+        <h2>{username}</h2>
+        <div className='m'>
+          <Button className='makeAccountButton' onClick={handleMakeAccount}>Make Account</Button>
         </div>
 
-        <div className='continueGuest'>
-          <Button className='guestButton'>Continue as guest</Button>
         </div>
 
       </div>
