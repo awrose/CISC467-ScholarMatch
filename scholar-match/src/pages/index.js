@@ -13,19 +13,128 @@ const Home = ({scholarships, setScholarships}) => {
   const [displayedScholarships, setDisplayedScholarships ] = useState(scholarships)
   const { Search } = Input;
 
+  console.log(displayedScholarships);
+
   const onSearch = (value) => {
     console.log(value);
 
     if(value !== ''){
-      setDisplayedScholarships(displayedScholarships.filter(scholarship => scholarship.Name.search(value) !== -1))
+      setDisplayedScholarships(displayedScholarships.filter(scholarship => scholarship.Name.toLowerCase().search(value.toLowerCase()) !== -1))
     }else{
       setDisplayedScholarships(scholarships);
     }
   }
 
   const handleMultiSelect = (value) => {
+    //console.log(value)
     //value: an array of the values selected 
+    //sort asc - desc
+    if(value.length === 0){
+      setDisplayedScholarships(scholarships);
+    }
+
+    //alphabetic
+    if(value.includes('nameAsc')){
+      setDisplayedScholarships([...displayedScholarships].sort(function(a, b){
+        var nameA = a.Name.toLowerCase();
+        var nameB = b.Name.toLowerCase();
+
+        if(nameA < nameB) return -1;
+        else if (nameA > nameB) return 1;
+        return 0;
+      }));
+
+      console.log(displayedScholarships)
+    }
+
+    if(value.includes('nameDesc')){
+      setDisplayedScholarships([...displayedScholarships].sort(function(a, b){
+        var nameA = a.Name.toLowerCase();
+        var nameB = b.Name.toLowerCase();
+
+        if(nameA < nameB) return 1;
+        else if (nameA > nameB) return -1;
+        return 0;
+      }));
+    }
+
+    //dates
+    if(value.includes('dateDesc')){
+      //sort the array by dates
+      setDisplayedScholarships([...displayedScholarships].sort(function(a, b){
+        return (a.Deadline < b.Deadline)  ? 1 : ((a.Deadline > b.Deadline) ? -1: 0);
+      }))
+    }
+
+    if(value.includes('dateAsc')){
+      setDisplayedScholarships([...displayedScholarships].sort(function(a, b){
+        return (a.Deadline < b.Deadline)  ? -1 : ((a.Deadline > b.Deadline) ? 1: 0);
+      }))
+    }
+
+    if(value.includes('amtAsc')){
+      setDisplayedScholarships([...displayedScholarships].sort(function(a, b){
+        a = parseInt(a.Amount)
+        b = parseInt(b.Amount)
+        return (a < b)  ? -1 : ((a > b) ? 1: 0);
+      }))
+    }
+
+    if(value.includes('amtDesc')){
+      setDisplayedScholarships([...displayedScholarships].sort(function(a, b){
+        a = parseInt(a.Amount)
+        b = parseInt(b.Amount)
+        return (a < b)  ? 1 : ((a > b) ? -1: 0);
+      }))
+
+      console.log(parseInt("10,000"))
+    }
+
+    //category 
+    if(value.includes('women')){
+
+    }
+
+    if(value.includes('lgbtq')){
+
+    }
+
+    if(value.includes('firstGen')){
+
+    }
+
+    if(value.includes('africanAmerican')){
+
+    }
+
+    if(value.includes('hsStudent')){
+
+    }
+
+    if(value.includes('collegeStudent')){
+
+    }
+
+    //due date
+    if(value.includes('dueToday')){
+      //get today's date
+
+
+    }
+
+    if(value.includes('dueWeek')){
+
+    }
+
+    if(value.includes('duemonth')){
+
+    }
+
+    if(value.includes('dueYear')){
+
+    }
   }
+
 
 
 
@@ -65,20 +174,14 @@ const Home = ({scholarships, setScholarships}) => {
                 {label: 'College Student', value: 'collegeStudent'}
               ]
             },{
-              label: 'Region',
-              options: [
-                {label: 'Delaware', value: 'de'},
-                {label: 'Pennsylvania', value: 'pa'},
-                {label: 'Virginia', value: 'va'},
-                {label: 'Florida', value: 'fl'},
-              ]
-            },{
               label: 'Sort',
               options: [
                 {label: 'Scholarship Name A - Z', value: 'nameAsc'},
                 {label: 'Scholarship Name Z - A', value: 'nameDesc'},
                 {label: 'Due Date Asc', value: 'dateAsc'},
-                {label: 'Due Date Desc', value: 'dateDesc'}
+                {label: 'Due Date Desc', value: 'dateDesc'},
+                {label: 'Amount Asc', value: 'amtAsc'},
+                {label: 'Amount Desc', value: 'amtDesc'}
               ]
             }
           ]}

@@ -7,8 +7,6 @@ import '../../styling_sheets/homePage.css';
 import { useState } from 'react';
 
 const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
-
-    //const [disabled, setDisabled] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
     const saveScholarship = () =>{
@@ -29,7 +27,7 @@ const ScholarshipCard = ({scholarship, scholarships, setScholarships}) => {
                 <Card hoverable style={{ width: 330 }} cover={<img src={scholarshipLogo} alt="pic of grad cap"></img>}>
                     <h3>{scholarship.Name}</h3>
                     <h5 >${scholarship.Amount}</h5>
-                    <h6 ><b>Deadline: </b>{scholarship.Deadline}</h6>
+                    <h6 ><b>Deadline: </b>{scholarship.Deadline.toLocaleString()}</h6>
                     <p class="scroll">{scholarship.Description}</p>
                     <div style={{display: 'flex', justifyContent: 'center'}}>
                         <Button style={{align: "center", display: "block"}} variant = "primary" onClick={changeShowModal}>More</Button>
