@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/CISC467-ScholarMatch/static/css/main.0cdafea5.css",
+    "main.js": "/CISC467-ScholarMatch/static/js/main.8388c8f3.js",
+    "static/js/787.0bbcaaf5.chunk.js": "/CISC467-ScholarMatch/static/js/787.0bbcaaf5.chunk.js",
+    "static/media/loginStudent.jpg": "/CISC467-ScholarMatch/static/media/loginStudent.9b4d1732369b32aac567.jpg",
+    "static/media/gradcap.png": "/CISC467-ScholarMatch/static/media/gradcap.8f5b244184f834d036a2.png",
+    "index.html": "/CISC467-ScholarMatch/index.html",
+    "main.0cdafea5.css.map": "/CISC467-ScholarMatch/static/css/main.0cdafea5.css.map",
+    "main.8388c8f3.js.map": "/CISC467-ScholarMatch/static/js/main.8388c8f3.js.map",
+    "787.0bbcaaf5.chunk.js.map": "/CISC467-ScholarMatch/static/js/787.0bbcaaf5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0cdafea5.css",
+    "static/js/main.8388c8f3.js"
+  ]
+}
